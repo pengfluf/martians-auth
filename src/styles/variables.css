@@ -1,0 +1,4 @@
+:root {
+  @custom-media --viewport-sm (width > 576px) and (width < 768px);
+  @custom-media --viewport-md (width > 768px);
+}

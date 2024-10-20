@@ -1,0 +1,14 @@
+.container {
+  padding-inline: 16px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+}
+
+.button-wrapper {
+  margin-top: 16px;
+}

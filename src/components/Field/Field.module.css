@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  width: 100%;
+
+  padding: 8px 16px;
+
+  border-width: 1px;
+  border-color: #a7a5a5;
+  border-radius: 4px;
+
+  &:focus {
+    outline-color: blueviolet;
+    border-color: black;
+  }
+
+  &--error {
+    border-color: red;
+  }
+}
+
+.error-message {
+  margin-left: 4px;
+}
