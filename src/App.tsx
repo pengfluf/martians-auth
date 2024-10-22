@@ -1,21 +1,22 @@
-import style from './App.module.css';
-import { SubmitButton } from './components/SubmitButton';
+import { useReducer } from 'react';
 
-import { Field } from './components/Field';
+import { SignIn } from './pages/SignIn/SignIn';
+import { initialState, reducer } from './store';
+
+import style from './App.module.css';
 
 function App() {
-  return (
-    <div className={style.container}>
-      <form action="/submit">
-        <div className={style.fields}>
-          <Field label="Email" />
-          <Field type="password" label="Password" />
-        </div>
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { isSubmitting, submitErrorMessage, fields } = state;
 
-        <div className={style['button-wrapper']}>
-          <SubmitButton>Sign in</SubmitButton>
-        </div>
-      </form>
+  return (
+    <div className={style.wrapper}>
+      <SignIn
+        fields={fields}
+        isSubmitting={isSubmitting}
+        submitErrorMessage={submitErrorMessage}
+        dispatch={dispatch}
+      />
     </div>
   );
 }

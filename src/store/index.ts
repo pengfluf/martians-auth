@@ -1,12 +1,21 @@
 import { getInitialFields } from '../utils';
+
 import { Action, ActionType, State } from './types';
 
 export const initialState: State = {
+  isSubmitting: false,
+  submitErrorMessage: '',
   fields: getInitialFields(),
 };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
+    case ActionType.UPDATE_IS_SUBMITTING:
+      return { ...state, isSubmitting: action.value };
+
+    case ActionType.UPDATE_SUBMIT_ERROR_MESSAGE:
+      return { ...state, submitErrorMessage: action.value };
+
     case ActionType.UPDATE_FIELD_VALUE:
       return {
         ...state,
@@ -26,7 +35,7 @@ export function reducer(state: State, action: Action): State {
           ...state.fields,
           [action.key]: {
             ...state.fields[action.key],
-            errorMessage: action.message,
+            errorMessage: action.value,
           },
         },
       };

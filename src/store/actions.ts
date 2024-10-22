@@ -1,15 +1,26 @@
 import {
   ActionType,
-  ActionUpdateFieldValue,
   ActionUpdateFieldErrorMessage,
   ActionUpdateFields,
+  ActionUpdateFieldValue,
+  ActionUpdateIsSubmitting,
+  ActionUpdateSubmitErrorMessage,
+  State,
+  UpdateFieldErrorMessagePayload,
+  UpdateFieldValuePayload,
 } from './types';
 
-type ActionWithoutType<T> = Omit<T, 'type'>;
-type UpdateFieldValuePayload = ActionWithoutType<ActionUpdateFieldValue>;
-type UpdateFieldErrorMessagePayload =
-  ActionWithoutType<ActionUpdateFieldErrorMessage>;
-type UpdateFieldsPayload = ActionWithoutType<ActionUpdateFields>;
+export function updateIsSubmitting(
+  value: State['isSubmitting'],
+): ActionUpdateIsSubmitting {
+  return { type: ActionType.UPDATE_IS_SUBMITTING, value };
+}
+
+export function updateSubmitErrorMessage(
+  value: State['submitErrorMessage'],
+): ActionUpdateSubmitErrorMessage {
+  return { type: ActionType.UPDATE_SUBMIT_ERROR_MESSAGE, value };
+}
 
 export function updateFieldValue({
   key,
@@ -24,13 +35,12 @@ export function updateFieldValue({
 
 export function updateFieldErrorMessage({
   key,
-  message,
+  value,
 }: UpdateFieldErrorMessagePayload): ActionUpdateFieldErrorMessage {
-  return { type: ActionType.UPDATE_FIELD_ERROR_MESSAGE, key, message };
+  return { type: ActionType.UPDATE_FIELD_ERROR_MESSAGE, key, value };
 }
 
-export function updateFields({
-  fields,
-}: UpdateFieldsPayload): ActionUpdateFields {
+export function updateFields(fields: State['fields']): ActionUpdateFields {
+  console.log('fields', fields);
   return { type: ActionType.UPDATE_FIELDS, fields };
 }

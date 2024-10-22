@@ -1,18 +1,32 @@
-import { memo, useMemo } from 'react';
-import { nanoid } from 'nanoid';
+import { ChangeEvent, memo, useCallback } from 'react';
 
-import { getClassName } from '../../utils';
+import { fieldTypeMap } from '@constants';
+import {
+  FieldKey,
+  UpdateFieldErrorMessagePayload,
+  UpdateFieldValuePayload,
+} from '@store/types';
+import { getClassName, getFieldErrorMessage } from '@utils';
 
 import style from './Field.module.css';
 
 interface Props {
-  type?: HTMLInputElement['type'];
+  id: FieldKey;
   label: string;
+  value: string;
   errorMessage?: string;
+  updateValue: (payload: UpdateFieldValuePayload) => void;
+  updateErrorMessage: (payload: UpdateFieldErrorMessagePayload) => void;
 }
 
-function FieldComponent({ type = 'text', label, errorMessage }: Props) {
-  const id = useMemo(() => nanoid(5), []);
+function FieldComponent({
+  id,
+  label,
+  value,
+  errorMessage,
+  updateValue,
+  updateErrorMessage,
+}: Props) {
   const inputClassName = getClassName({
     style,
     block: 'input',
@@ -20,11 +34,32 @@ function FieldComponent({ type = 'text', label, errorMessage }: Props) {
       error: !!errorMessage,
     },
   });
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      updateValue({ key: id, value: event.target.value });
+
+      if (!errorMessage) return;
+
+      const newErrorMessage = getFieldErrorMessage({
+        key: id,
+        value: event.target.value,
+      });
+
+      updateErrorMessage({ key: id, value: newErrorMessage });
+    },
+    [id, errorMessage, updateValue, updateErrorMessage],
+  );
 
   return (
     <div className={style.wrapper}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} className={inputClassName} type={type} />
+      <input
+        id={id}
+        className={inputClassName}
+        type={fieldTypeMap[id]}
+        value={value}
+        onChange={onChange}
+      />
       {errorMessage && (
         <p className={style['error-message']}>{errorMessage}</p>
       )}

@@ -9,17 +9,16 @@
 
   padding: 8px 16px;
 
-  border-width: 1px;
-  border-color: #a7a5a5;
+  outline: none;
+  border: 2px solid #a7a5a5; 
   border-radius: 4px;
-
-  &:focus {
-    outline-color: blueviolet;
-    border-color: black;
-  }
 
   &--error {
     border-color: red;
+  }
+
+  &:focus {
+    border-color: blueviolet;
   }
 }
 

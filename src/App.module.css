@@ -1,14 +1,8 @@
-.container {
-  padding-inline: 16px;
-}
+@import url('@styles/variables.css');
 
-.fields {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.wrapper {
+  height: 100vh;
 
-}
-
-.button-wrapper {
-  margin-top: 16px;
+  background:
+    linear-gradient(0deg,rgba(141,246,147,0.3), rgba(158,239,255,0.3) 100%);
 }

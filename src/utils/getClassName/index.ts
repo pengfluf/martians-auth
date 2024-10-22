@@ -1,7 +1,6 @@
-import { Block, PassedElements, PassedModifiers } from './types';
-
 import { getElements } from './getElements';
 import { getModifiers } from './getModifiers';
+import { Block, PassedElements, PassedModifiers } from './types';
 
 interface Payload {
   style: CSSModuleClasses;
