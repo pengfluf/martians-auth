@@ -38,5 +38,5 @@
       "@utils/*": ["./src/utils/*"],
     }
   },
-  "include": ["src"]
+  "include": ["src", "tsconfig.jest.json"]
 }

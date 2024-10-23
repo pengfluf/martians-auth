@@ -1,15 +1,23 @@
-import { getInitialFields } from '../utils';
+import { initialFields } from '@/constants';
 
 import { Action, ActionType, State } from './types';
 
 export const initialState: State = {
+  isSignedIn: false,
   isSubmitting: false,
+  isPasswordRevealed: false,
   submitErrorMessage: '',
-  fields: getInitialFields(),
+  fields: initialFields,
 };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
+    case ActionType.UPDATE_IS_SIGNED_IN:
+      return { ...state, isSignedIn: action.value };
+
+    case ActionType.UPDATE_IS_PASSWORD_REVEALED:
+      return { ...state, isPasswordRevealed: action.value };
+
     case ActionType.UPDATE_IS_SUBMITTING:
       return { ...state, isSubmitting: action.value };
 

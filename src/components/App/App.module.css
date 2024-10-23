@@ -1,6 +1,9 @@
 @import url('@styles/variables.css');
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+
   height: 100vh;
 
   background:

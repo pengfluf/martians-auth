@@ -1,5 +1,6 @@
-import { useCallback } from 'react';
+import { MouseEventHandler, useCallback } from 'react';
 
+import { defaultPassword } from '@/constants';
 import SpinnerSvg from '@assets/spinner.svg';
 import { Container, Field, SubmitButton } from '@components';
 import * as actions from '@store/actions';
@@ -12,11 +13,14 @@ import {
 } from '@store/types';
 import { useSubmitForm } from '@utils';
 
+import { SecondaryActions } from './components';
+
 import style from './SignIn.module.css';
 
 interface Props {
   fields: State['fields'];
   isSubmitting: State['isSubmitting'];
+  isPasswordRevealed: State['isPasswordRevealed'];
   submitErrorMessage: State['submitErrorMessage'];
   dispatch: AppDispatch;
 }
@@ -24,6 +28,7 @@ interface Props {
 export function SignIn({
   fields,
   isSubmitting,
+  isPasswordRevealed,
   submitErrorMessage,
   dispatch,
 }: Props) {
@@ -43,49 +48,79 @@ export function SignIn({
 
   const submitForm = useSubmitForm({ fields, dispatch });
 
+  const fillFields: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const newFields = {
+        ...fields,
+        [FieldKey.email]: {
+          ...fields[FieldKey.email],
+          value: 'example@example.com',
+          errorMessage: '',
+        },
+        [FieldKey.password]: {
+          ...fields[FieldKey.password],
+          value: defaultPassword,
+          errorMessage: '',
+        },
+      };
+
+      dispatch(actions.updateFields(newFields));
+    },
+    [fields, dispatch],
+  );
+
+  const revealPassword: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      dispatch(actions.updateIsPasswordRevealed(true));
+    },
+    [dispatch],
+  );
+
   return (
-    <div>
-      <Container>
-        <div className={style.content}>
-          <h2>Sign in</h2>
+    <Container contentClassName={style.content}>
+      <h2>Sign in</h2>
 
-          <form
-            className={style.form}
-            action="/signin"
-            onSubmit={submitForm}
-          >
-            <div className={style.fields}>
-              {Object.entries(fields).map(
-                ([key, { label, value, errorMessage }]) => {
-                  return (
-                    <Field
-                      key={key}
-                      id={key as FieldKey}
-                      label={label}
-                      value={value}
-                      errorMessage={errorMessage}
-                      updateValue={updateFieldValue}
-                      updateErrorMessage={updateFieldErrorMessage}
-                    />
-                  );
-                },
-              )}
-            </div>
-
-            <div className={style['button-wrapper']}>
-              {isSubmitting && (
-                <img className={style.spinner} src={SpinnerSvg} />
-              )}
-
-              <SubmitButton isSubmitting={isSubmitting}>
-                {isSubmitting ? '' : 'Sign in'}
-              </SubmitButton>
-            </div>
-
-            {submitErrorMessage && <p>{submitErrorMessage}</p>}
-          </form>
+      <form className={style.form} action="/signin" onSubmit={submitForm}>
+        <div className={style.fields}>
+          {Object.entries(fields).map(
+            ([key, { label, value, errorMessage }]) => {
+              return (
+                <Field
+                  key={key}
+                  id={key as FieldKey}
+                  label={label}
+                  value={value}
+                  errorMessage={errorMessage}
+                  updateValue={updateFieldValue}
+                  updateErrorMessage={updateFieldErrorMessage}
+                />
+              );
+            },
+          )}
         </div>
-      </Container>
-    </div>
+
+        <div className={style['button-wrapper']}>
+          {isSubmitting && (
+            <img className={style.spinner} src={SpinnerSvg} />
+          )}
+
+          <SubmitButton isSubmitting={isSubmitting}>
+            {isSubmitting ? '' : 'Sign in'}
+          </SubmitButton>
+        </div>
+
+        {submitErrorMessage && <p>{submitErrorMessage}</p>}
+
+        <SecondaryActions
+          isPasswordRevealed={isPasswordRevealed}
+          fillFields={fillFields}
+          revealPassword={revealPassword}
+        />
+      </form>
+    </Container>
   );
 }

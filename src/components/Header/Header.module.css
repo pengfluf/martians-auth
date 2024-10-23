@@ -1,0 +1,12 @@
+.wrapper {
+  padding-block: 16px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 32px;
+}

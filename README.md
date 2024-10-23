@@ -14,10 +14,11 @@ asdf install && pnpm i && pnpm dev
 - [pnpm](https://pnpm.io/)
 - [Vite](https://v4.vite.dev/)
 
-### Could be potentially used
+### Could potentially be used
 
 - [Styled Components](https://styled-components.com/) / [Emotion](https://emotion.sh/)
 - [Redux Toolkit](https://redux-toolkit.js.org/) / [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [React Router](https://reactrouter.com/)
 
 ## Field Validation
 

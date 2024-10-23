@@ -11,6 +11,9 @@
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
 
   @media (--viewport-md) {
@@ -32,7 +35,6 @@
 .button-wrapper {
   position: relative;
 
-  margin-top: 16px;
 }
 
 .spinner {
@@ -42,3 +44,4 @@
 
   filter: invert(1);
 }
+

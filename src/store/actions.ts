@@ -3,12 +3,26 @@ import {
   ActionUpdateFieldErrorMessage,
   ActionUpdateFields,
   ActionUpdateFieldValue,
+  ActionUpdateIsPasswordRevealed,
+  ActionUpdateIsSignedIn,
   ActionUpdateIsSubmitting,
   ActionUpdateSubmitErrorMessage,
   State,
   UpdateFieldErrorMessagePayload,
   UpdateFieldValuePayload,
 } from './types';
+
+export function updateIsSignedIn(
+  value: State['isSignedIn'],
+): ActionUpdateIsSignedIn {
+  return { type: ActionType.UPDATE_IS_SIGNED_IN, value };
+}
+
+export function updateIsPasswordRevealed(
+  value: State['isPasswordRevealed'],
+): ActionUpdateIsPasswordRevealed {
+  return { type: ActionType.UPDATE_IS_PASSWORD_REVEALED, value };
+}
 
 export function updateIsSubmitting(
   value: State['isSubmitting'],
@@ -41,6 +55,5 @@ export function updateFieldErrorMessage({
 }
 
 export function updateFields(fields: State['fields']): ActionUpdateFields {
-  console.log('fields', fields);
   return { type: ActionType.UPDATE_FIELDS, fields };
 }

@@ -1,6 +1,12 @@
 import { FormEventHandler, useCallback } from 'react';
 
-import * as actions from '@store/actions';
+import { initialFields } from '@/constants';
+import {
+  updateFields,
+  updateIsSignedIn,
+  updateIsSubmitting,
+  updateSubmitErrorMessage,
+} from '@/store/actions';
 import { AppDispatch, Fields } from '@store/types';
 
 import { getValidatedFields } from './getValidatedFields';
@@ -21,25 +27,27 @@ export function useSubmitForm({
       const validatedFields = getValidatedFields(fields);
 
       if (validatedFields.hasErrors) {
-        dispatch(actions.updateFields(validatedFields.fields));
+        dispatch(updateFields(validatedFields.fields));
 
         return;
       }
 
       try {
-        dispatch(actions.updateIsSubmitting(true));
+        dispatch(updateIsSubmitting(true));
 
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
+        dispatch(updateIsSignedIn(true));
+        dispatch(updateFields(initialFields));
       } catch (error) {
         dispatch(
-          actions.updateSubmitErrorMessage(
+          updateSubmitErrorMessage(
             'Something is wrong with the server, please try again later.',
           ),
         );
       } finally {
-        dispatch(actions.updateIsSubmitting(false));
+        dispatch(updateIsSubmitting(false));
       }
     },
     [fields, dispatch],

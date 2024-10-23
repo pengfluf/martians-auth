@@ -1,37 +1,35 @@
-import { getElements } from './getElements';
 import { getModifiers } from './getModifiers';
-import { Block, PassedElements, PassedModifiers } from './types';
+import { getUnhashedFoundation } from './getUnhashedFoundation';
+import { UnhashedModifiers } from './types';
 
 interface Payload {
   style: CSSModuleClasses;
-  block: Block;
-  elements?: PassedElements;
-  modifiers?: PassedModifiers;
+  block: string;
+  element?: string;
+  modifiers?: UnhashedModifiers;
 }
 
 export function getClassName({
   style,
-  block: passedBlock,
-  elements: passedElements = [],
-  modifiers: passedModifiers = {},
+  block: unhashedBlock,
+  element: unhashedElement,
+  modifiers: unhashedModifiers = {},
 }: Payload): string {
-  const block = style[passedBlock];
-
-  if (!block) {
-    throw new Error(`Block "${block}" wasn't found in style.`);
-  }
-
-  const elements = getElements({
-    style,
-    block: passedBlock,
-    elements: passedElements,
+  const unhashedFoundation = getUnhashedFoundation({
+    unhashedBlock,
+    unhashedElement,
   });
+  const foundation = style[unhashedFoundation];
+
+  if (!foundation) {
+    throw new Error(`"${unhashedFoundation}" wasn't found in style.`);
+  }
 
   const modifiers = getModifiers({
     style,
-    block: passedBlock,
-    modifiers: passedModifiers,
+    unhashedFoundation,
+    unhashedModifiers,
   });
 
-  return `${block} ${elements} ${modifiers}`.trim();
+  return `${foundation} ${modifiers}`.trim();
 }

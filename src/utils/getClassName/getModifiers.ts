@@ -1,19 +1,19 @@
-import { Block, PassedModifiers } from './types';
+import { UnhashedModifiers } from './types';
 
 interface Payload {
   style: CSSModuleClasses;
-  block: Block;
-  modifiers: PassedModifiers;
+  unhashedFoundation: string;
+  unhashedModifiers: UnhashedModifiers;
 }
 
 export function getModifiers({
   style,
-  block,
-  modifiers,
+  unhashedFoundation,
+  unhashedModifiers,
 }: Payload): string {
-  return Object.entries(modifiers)
+  return Object.entries(unhashedModifiers)
     .reduce((acc, [key, value]) => {
-      const modifier = style[`${block}--${key}`];
+      const modifier = style[`${unhashedFoundation}--${key}`];
 
       if (!modifier) return acc;
 
