@@ -1,0 +1,8 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: '*.{ts,tsx}'
+      run: pnpm lint {staged_files}
+    test:
+      run: pnpm test
