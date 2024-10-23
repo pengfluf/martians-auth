@@ -31,5 +31,5 @@ export function getClassName({
     unhashedModifiers,
   });
 
-  return `${foundation} ${modifiers}`.trim();
+  return `${foundation} ${modifiers}`.trimEnd();
 }
