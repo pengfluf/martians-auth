@@ -1,4 +1,4 @@
-import { initialFields } from '@/constants';
+import { initialFields } from '@constants';
 
 import { Action, ActionType, State } from './types';
 

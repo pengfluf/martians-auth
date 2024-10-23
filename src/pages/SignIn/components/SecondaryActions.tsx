@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 
-import { defaultPassword } from '@/constants';
-import { State } from '@/store/types';
+import { defaultPassword } from '@constants';
+import { State } from '@store/types';
 
 import style from './SecondaryActions.module.css';
 

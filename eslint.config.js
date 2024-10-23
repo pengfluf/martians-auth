@@ -73,7 +73,7 @@ export default tseslint.config(
             ['^react', '^@?\\w'],
             // Internal packages.
             [
-              '^(@|@assets|@components|@constants|@pages|@store|@styles|@utils)(/.*|$)',
+              '^(@|@assets|@components|@constants|@pages|@store|@styles|@test|@utils)(/.*|$)',
             ],
             // Side effect imports.
             ['^\\u0000'],

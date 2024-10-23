@@ -1,12 +1,12 @@
 import { FormEventHandler, useCallback } from 'react';
 
-import { initialFields } from '@/constants';
+import { initialFields } from '@constants';
 import {
   updateFields,
   updateIsSignedIn,
   updateIsSubmitting,
   updateSubmitErrorMessage,
-} from '@/store/actions';
+} from '@store/actions';
 import { AppDispatch, Fields } from '@store/types';
 
 import { getValidatedFields } from './getValidatedFields';
