@@ -24,3 +24,15 @@ asdf install && pnpm i && pnpm dev
 
 - All fields validation - on form submit
 - Individual field validation - only if a field was previously validated and received errors
+
+## Testing
+
+```bash
+pnpm test
+```
+
+There're test examples of:
+
+- utility function
+- component
+- custom hook

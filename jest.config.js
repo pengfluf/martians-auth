@@ -13,6 +13,7 @@ export default {
   transform: {
     '^.+.tsx?$': ['ts-jest', { tsconfig: './tsconfig.app.json' }],
   },
+  testMatch: ['**/__tests__/**/*.ts?(x)'],
 
   moduleNameMapper: {
     '^.+\\.(jpg|jpeg|png|gif|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':

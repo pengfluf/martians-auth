@@ -47,7 +47,11 @@ export function SignIn({
     [dispatch],
   );
 
-  const submitForm = useSubmitForm({ fields, dispatch });
+  const submitForm = useSubmitForm({
+    fields,
+    dispatch,
+    serverDelay: 1000,
+  });
 
   const fillFields: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {

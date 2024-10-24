@@ -1,4 +1,4 @@
-import { FormEventHandler, useCallback } from 'react';
+import { FormEvent, useCallback } from 'react';
 
 import { initialFields } from '@constants';
 import {
@@ -14,12 +14,16 @@ import { getValidatedFields } from './getValidatedFields';
 interface Payload {
   fields: Fields;
   dispatch: AppDispatch;
+  isServerOk?: boolean;
+  serverDelay?: number;
 }
 
 export function useSubmitForm({
   fields,
   dispatch,
-}: Payload): FormEventHandler<HTMLFormElement> {
+  isServerOk = true,
+  serverDelay = 0,
+}: Payload): (event: FormEvent) => Promise<void> {
   return useCallback(
     async (event) => {
       event.preventDefault();
@@ -35,8 +39,12 @@ export function useSubmitForm({
       try {
         dispatch(updateIsSubmitting(true));
 
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1000);
+        await new Promise<void>((resolve, reject) => {
+          setTimeout(() => {
+            if (isServerOk) return resolve();
+
+            reject(new Error(`Server isn't ok.`));
+          }, serverDelay);
         });
         dispatch(updateIsSignedIn(true));
         dispatch(updateFields(initialFields));
@@ -50,6 +58,6 @@ export function useSubmitForm({
         dispatch(updateIsSubmitting(false));
       }
     },
-    [fields, dispatch],
+    [fields, dispatch, isServerOk, serverDelay],
   );
 }
