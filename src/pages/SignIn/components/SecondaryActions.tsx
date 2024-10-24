@@ -19,7 +19,7 @@ export function SecondaryActions({
   return (
     <div className={style.wrapper}>
       <button className={style.action} onClick={fillFields}>
-        Fill the fields
+        Fill out the fields
       </button>
 
       {!isPasswordRevealed && (

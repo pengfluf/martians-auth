@@ -10,6 +10,7 @@ interface Props {
 export function SubmitButton({ isSubmitting, children }: Props) {
   return (
     <input
+      role="button"
       disabled={isSubmitting}
       className={style.button}
       type="submit"

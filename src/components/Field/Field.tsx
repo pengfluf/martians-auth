@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback } from 'react';
+import { ChangeEvent, memo, useCallback, useMemo } from 'react';
 
 import { fieldTypeMap } from '@constants';
 import {
@@ -6,7 +6,11 @@ import {
   UpdateFieldErrorMessagePayload,
   UpdateFieldValuePayload,
 } from '@store/types';
-import { getClassName, getFieldErrorMessage } from '@utils';
+import {
+  getAriaDescribedById,
+  getClassName,
+  getFieldErrorMessage,
+} from '@utils';
 
 import style from './Field.module.css';
 
@@ -15,6 +19,7 @@ interface Props {
   label: string;
   value: string;
   errorMessage?: string;
+  isRequired?: boolean;
   updateValue: (payload: UpdateFieldValuePayload) => void;
   updateErrorMessage: (payload: UpdateFieldErrorMessagePayload) => void;
 }
@@ -24,6 +29,7 @@ function FieldComponent({
   label,
   value,
   errorMessage,
+  isRequired = true,
   updateValue,
   updateErrorMessage,
 }: Props) {
@@ -50,6 +56,8 @@ function FieldComponent({
     [id, errorMessage, updateValue, updateErrorMessage],
   );
 
+  const ariaDescribedById = useMemo(() => getAriaDescribedById(id), [id]);
+
   return (
     <div className={style.wrapper}>
       <label htmlFor={id}>{label}</label>
@@ -59,9 +67,16 @@ function FieldComponent({
         type={fieldTypeMap[id]}
         value={value}
         onChange={onChange}
+        required={isRequired}
+        aria-required={isRequired}
+        aria-label={id}
+        aria-describedby={ariaDescribedById}
+        aria-invalid={!!errorMessage}
       />
       {errorMessage && (
-        <p className={style['error-message']}>{errorMessage}</p>
+        <p id={ariaDescribedById} className={style['error-message']}>
+          {errorMessage}
+        </p>
       )}
     </div>
   );

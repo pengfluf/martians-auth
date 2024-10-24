@@ -7,7 +7,12 @@ export function Header() {
   return (
     <header className={style.wrapper}>
       <Container contentClassName={style.content}>
-        <img className={style.logo} src={LogoSvg} alt="Logo" />
+        <img
+          className={style.logo}
+          src={LogoSvg}
+          alt="Logo"
+          aria-label="Logo"
+        />
       </Container>
     </header>
   );
