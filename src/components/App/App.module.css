@@ -1,4 +1,4 @@
-@import url('@styles/variables.css');
+@import url('@styles/colors.css');
 
 .wrapper {
   display: flex;
@@ -7,5 +7,5 @@
   height: 100vh;
 
   background:
-    linear-gradient(0deg,rgba(141,246,147,0.3), rgba(158,239,255,0.3) 100%);
+    linear-gradient(0deg, var(--color-gradient-1), var(--color-gradient-2) 100%);
 }

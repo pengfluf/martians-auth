@@ -1,4 +1,5 @@
-@import url('./variables.css');
+@import url('./colors.css');
+@import url('./custom-media.css');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -13,9 +14,11 @@ p, h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
   font-weight: 400;
 
+  color: var(--color-text);
   color-scheme: light dark;
 
   font-synthesis: none;
+  /* stylelint-disable-next-line value-keyword-case */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,8 +28,8 @@ main {
   padding-block: 16px;
 }
 
-button, input[role=button] {
+button, input[role="button"] {
   &:focus-visible {
-    outline: 3px solid orange;
+    outline: 5px solid var(--color-highlight);
   }
 }

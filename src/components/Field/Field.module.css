@@ -10,15 +10,18 @@
   padding: 8px 16px;
 
   outline: none;
-  border: 2px solid #a7a5a5; 
+  border: 2px solid var(--color-input-border);
   border-radius: 4px;
 
+  color: var(--color-input-text);
+  background-color: var(--color-input-background);
+
   &--error {
-    border-color: red;
+    border-color: var(--color-input-border-error);
   }
 
   &:focus {
-    border-color: blueviolet;
+    border-color: var(--color-input-border-focus);
   }
 }
 

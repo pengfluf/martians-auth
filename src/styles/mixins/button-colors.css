@@ -1,0 +1,20 @@
+/* stylelint-disable custom-property-pattern */
+
+@define-mixin button-colors $buttonName, $baseColor {
+  --color-$(buttonName)-button: $(baseColor);
+  --color-$(buttonName)-button-hover: oklch(
+    from var(--color-$(buttonName)-button)
+      calc(l + var(--color-light-step)) calc(c + var(--color-chroma-step))
+      h
+  );
+  --color-$(buttonName)-button-active: oklch(
+    from var(--color-$(buttonName)-button)
+      calc(l - var(--color-light-step)) calc(c - var(--color-chroma-step))
+      h
+  );
+  --color-$(buttonName)-button-disabled: oklch(
+    from var(--color-$(buttonName)-button)
+      calc(l - var(--color-light-step) * 2)
+      calc(c - var(--color-chroma-step)) h
+  );
+}

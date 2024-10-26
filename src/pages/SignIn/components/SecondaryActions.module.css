@@ -9,15 +9,15 @@
 
   background: none;
   border: none;
+  border-radius: 4px;
 
   text-decoration: underline;
 
   cursor: pointer;
 
-  border-radius: 4px;
+  color: var(--color-text);
 }
 
 .password, .action {
   font-size: 15px;
-  line-height: 1.15;
 }

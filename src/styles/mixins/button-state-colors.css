@@ -1,0 +1,18 @@
+/* stylelint-disable custom-property-pattern */
+
+@define-mixin button-state-colors $buttonName {
+  color: var(--color-button-text);
+  background-color: var(--color-$(buttonName)-button);
+
+  &:hover {
+    background-color: var(--color-$(buttonName)-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-$(buttonName)-button-active);
+  }
+
+  &:disabled {
+    background-color: var(--color-$(buttonName)-button-disabled);
+  }
+}

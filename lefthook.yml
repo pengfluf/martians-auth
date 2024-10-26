@@ -1,8 +1,11 @@
 pre-commit:
   parallel: true
   commands:
-    lint:
+    lint-js:
       glob: '*.{ts,tsx}'
-      run: pnpm lint {staged_files}
+      run: pnpm lint:js {staged_files}
+    lint-styles:
+      glob: '*.css'
+      run: pnpm lint:styles {staged_files}
     test:
       run: pnpm test
