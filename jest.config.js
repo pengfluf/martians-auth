@@ -19,6 +19,9 @@ export default {
     '^.+\\.(jpg|jpeg|png|gif|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       path.resolve('./src/test/mocks/fileMock.js'),
     '\\.css$': path.resolve('./src/test/mocks/styleMock.js'),
+    '\\.svg\\?react$': path.resolve(
+      './src/test/mocks/svgComponentMock.js',
+    ),
     ...Object.entries(
       pathsToModuleNameMapper(compilerOptions.paths),
     ).reduce(

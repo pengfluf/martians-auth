@@ -4,28 +4,24 @@ $color-background-2: oklch(90% 0.6 211);
 :root {
   --color-light-step: 0.06;
   --color-chroma-step: 0.035;
-  --background-opacity: 30%;
 
   --color-white: oklch(100% 3.5 0);
   --color-black: oklch(0% 0 0);
   --color-red: oklch(62% 0.25 29);
+  --color-turquoise: oklch(82% 0.1307 185);
 
   --color-text: var(--color-black);
 
   --color-gray-darker: oklch(60% 0 0);
   --color-gray-brighter: oklch(72% 0 17);
 
-  --color-gradient-1: oklch(
-    from $(color-background-1) l c h / var(--background-opacity)
-  );
-  --color-gradient-2: oklch(
-    from $(color-background-2) l c h / var(--background-opacity)
-  );
+  --color-gradient-1: oklch(from $(color-background-1) l calc(c / 10) h);
+  --color-gradient-2: oklch(from $(color-background-2) l calc(c / 10) h);
 
   --color-button-text: var(--color-white);
   --color-accent-primary-base: oklch(50% 0.2 300);
   --color-accent-secondary-base: oklch(
-    from var(--color-accent-primary-base) calc(l + 0.05) c calc(h - 30)
+    from var(--color-accent-primary-base) calc(l + 0.06) c calc(h - 30)
   );
   --color-highlight: oklch(80% 0.25 70);
 
@@ -42,7 +38,7 @@ $color-background-2: oklch(90% 0.6 211);
 
   --color-form-border: var(--color-gray-darker);
 
-  @media (prefers-color-scheme: dark) {
+  &.theme-dark {
     --color-text: var(--color-white);
 
     --color-gradient-1: oklch(

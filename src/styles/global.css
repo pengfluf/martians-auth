@@ -1,11 +1,19 @@
 @import url('./colors.css');
 @import url('./custom-media.css');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
@@ -14,8 +22,8 @@ p, h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--color-text);
   color-scheme: light dark;
+  color: var(--color-text);
 
   font-synthesis: none;
   /* stylelint-disable-next-line value-keyword-case */
@@ -28,8 +36,14 @@ main {
   padding-block: 16px;
 }
 
-button, input[role="button"] {
+button,
+input[role='button'] {
   &:focus-visible {
     outline: 5px solid var(--color-highlight);
   }
+}
+
+svg {
+  width: 24px;
+  height: 24px;
 }

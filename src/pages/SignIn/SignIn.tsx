@@ -1,6 +1,5 @@
 import { MouseEventHandler, useCallback } from 'react';
 
-import SpinnerSvg from '@assets/spinner.svg';
 import { Container, Field, SubmitButton } from '@components';
 import { defaultPassword } from '@constants';
 import * as actions from '@store/actions';
@@ -115,7 +114,9 @@ export function SignIn({
 
           <div className={style['button-wrapper']}>
             {isSubmitting && (
-              <img className={style.spinner} src={SpinnerSvg} />
+              <svg className={style.spinner}>
+                <use href="#spinner" />
+              </svg>
             )}
 
             <SubmitButton isSubmitting={isSubmitting}>

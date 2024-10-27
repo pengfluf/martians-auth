@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from 'react';
 
-import { Header } from '@components';
+import { Header, SvgSprite } from '@components';
 import { Account, SignIn } from '@pages';
 import { initialState, reducer } from '@store';
 import * as actions from '@store/actions';
@@ -22,22 +22,25 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <div className={style.wrapper}>
-      <Header />
+    <>
+      <SvgSprite />
+      <div className={style.wrapper}>
+        <Header />
 
-      <main className={style.main}>
-        {isSignedIn && <Account signOut={signOut} />}
+        <main className={style.main}>
+          {isSignedIn && <Account signOut={signOut} />}
 
-        {!isSignedIn && (
-          <SignIn
-            fields={fields}
-            isSubmitting={isSubmitting}
-            isPasswordRevealed={isPasswordRevealed}
-            submitErrorMessage={submitErrorMessage}
-            dispatch={dispatch}
-          />
-        )}
-      </main>
-    </div>
+          {!isSignedIn && (
+            <SignIn
+              fields={fields}
+              isSubmitting={isSubmitting}
+              isPasswordRevealed={isPasswordRevealed}
+              submitErrorMessage={submitErrorMessage}
+              dispatch={dispatch}
+            />
+          )}
+        </main>
+      </div>
+    </>
   );
 }

@@ -1,0 +1,78 @@
+$icon-size: 20px;
+
+$padding-block: calc($icon-size / 4);
+$padding-inline: calc($icon-size / 2);
+
+$min-width: calc($icon-size * 3 + $padding-inline * 2);
+
+$carcass-color-light: var(--color-black);
+$carcass-color-dark: var(--color-white);
+
+.wrapper,
+.icons {
+  border-radius: calc($icon-size * 2);
+}
+
+.wrapper {
+  min-width: $min-width;
+  padding: $padding-block $padding-inline;
+
+  border: 2px solid $carcass-color-light;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &--dark {
+    border-color: $carcass-color-dark;
+  }
+}
+
+.icons {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &::before {
+    display: block;
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+
+    width: $icon-size;
+    height: $icon-size;
+    border-radius: 50%;
+
+    background-color: $carcass-color-light;
+
+    transition: right 500ms ease-out;
+  }
+
+  &--dark::before {
+    right: calc(100% - $icon-size);
+
+    background-color: $carcass-color-dark;
+  }
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+
+  &--sun,
+  &--moon {
+    color: transparent;
+  }
+
+  &--sun-active {
+    color: $carcass-color-light;
+  }
+
+  &--moon-active {
+    color: var(--color-turquoise);
+  }
+}
