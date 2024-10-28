@@ -1,8 +1,6 @@
-<div style="display: flex; max-height: 400px;">
-  <div style="display: flex; justify-content: center; gap: 16px;">
-    <img src="./docs/light.png" alt="Light Theme" />
-    <img src="./docs/dark.png" alt="Dark Theme" />
-  </div>
+<div>
+  <img width="250" src="./docs/light.png" alt="Light Theme" />
+  <img width="250" src="./docs/dark.png" alt="Dark Theme" />
 </div>
 
 ## Development
