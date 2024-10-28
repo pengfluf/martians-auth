@@ -1,3 +1,24 @@
+<style>
+  .images {
+    display: flex;
+
+    max-height: 400px;
+  }
+
+  .images__inner-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+</style>
+
+<div class="images">
+  <div class="images__inner-wrapper">
+    <img src="./docs/light.png" alt="Light Theme" />
+    <img src="./docs/dark.png" alt="Dark Theme" />
+  </div>
+</div>
+
 ## Development
 
 1. Run
