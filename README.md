@@ -3,6 +3,11 @@
   <img width="250" src="./docs/dark.png" alt="Dark Theme" />
 </div>
 
+## Field Validation
+
+- All fields validation - on form submit
+- Individual field validation - only if a field was previously validated and received errors
+
 ## Development
 
 1. Run
@@ -24,11 +29,6 @@ asdf install && pnpm i && pnpm dev
 - [Styled Components](https://styled-components.com/) / [Emotion](https://emotion.sh/)
 - [Redux Toolkit](https://redux-toolkit.js.org/) / [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 - [React Router](https://reactrouter.com/)
-
-## Field Validation
-
-- All fields validation - on form submit
-- Individual field validation - only if a field was previously validated and received errors
 
 ## Testing
 
