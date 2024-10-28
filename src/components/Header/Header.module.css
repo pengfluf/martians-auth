@@ -12,3 +12,17 @@
   width: 32px;
   height: 32px;
 }
+
+.right-column {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.github-link {
+  display: flex;
+
+  &--inverted {
+    filter: invert(1);
+  }
+}

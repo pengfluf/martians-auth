@@ -1,6 +1,7 @@
 import { useCallback, useReducer } from 'react';
 
 import { Header, SvgSprite } from '@components';
+import { ThemeContextProvider } from '@context/ThemeContext';
 import { Account, SignIn } from '@pages';
 import { initialState, reducer } from '@store';
 import * as actions from '@store/actions';
@@ -10,6 +11,7 @@ import style from './App.module.css';
 export function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const {
+    theme,
     isSignedIn,
     isPasswordRevealed,
     isSubmitting,
@@ -22,7 +24,7 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <ThemeContextProvider theme={theme} dispatch={dispatch}>
       <SvgSprite />
       <div className={style.wrapper}>
         <Header />
@@ -41,6 +43,6 @@ export function App() {
           )}
         </main>
       </div>
-    </>
+    </ThemeContextProvider>
   );
 }

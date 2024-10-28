@@ -3,6 +3,7 @@ import { initialFields } from '@constants';
 import { Action, ActionType, State } from './types';
 
 export const initialState: State = {
+  theme: undefined,
   isSignedIn: false,
   isSubmitting: false,
   isPasswordRevealed: false,
@@ -12,6 +13,9 @@ export const initialState: State = {
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
+    case ActionType.UPDATE_THEME:
+      return { ...state, theme: action.value };
+
     case ActionType.UPDATE_IS_SIGNED_IN:
       return { ...state, isSignedIn: action.value };
 

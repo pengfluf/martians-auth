@@ -9,3 +9,7 @@ export const fieldTypeMap: FieldTypeMap = {
 export const defaultPassword = 'aaaAAA123';
 
 export const initialFields = getInitialFields();
+
+export const localStorageKeys = {
+  theme: 'theme',
+} as const;

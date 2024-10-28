@@ -1,5 +1,11 @@
 import { Dispatch } from 'react';
 
+export enum Theme {
+  'light' = 'light',
+  'dark' = 'dark',
+}
+export type ThemeValue = Theme | undefined;
+
 export interface FieldState {
   type: HTMLInputElement['type'];
   label: string;
@@ -17,6 +23,7 @@ export type FieldTypeMap = Record<FieldKey, HTMLInputElement['type']>;
 export type Fields = Record<FieldKey, FieldState>;
 
 export interface State {
+  theme: ThemeValue;
   isSignedIn: boolean;
   isSubmitting: boolean;
   isPasswordRevealed: boolean;
@@ -25,6 +32,8 @@ export interface State {
 }
 
 export enum ActionType {
+  UPDATE_THEME = 'UPDATE_THEME',
+
   UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN',
   UPDATE_IS_PASSWORD_REVEALED = 'UPDATE_IS_PASSWORD_REVEALED',
 
@@ -34,6 +43,11 @@ export enum ActionType {
   UPDATE_FIELD_VALUE = 'UPDATE_FIELD_VALUE',
   UPDATE_FIELD_ERROR_MESSAGE = 'UPDATE_FIELD_ERROR_MESSAGE',
   UPDATE_FIELDS = 'UPDATE_FIELDS',
+}
+
+export interface ActionUpdateTheme {
+  type: ActionType.UPDATE_THEME;
+  value: Theme;
 }
 
 export interface ActionUpdateIsSignedIn {
@@ -74,6 +88,7 @@ export interface ActionUpdateFields {
 }
 
 export type Action =
+  | ActionUpdateTheme
   | ActionUpdateIsSignedIn
   | ActionUpdateIsPasswordRevealed
   | ActionUpdateIsSubmitting

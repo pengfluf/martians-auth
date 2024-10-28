@@ -7,10 +7,16 @@ import {
   ActionUpdateIsSignedIn,
   ActionUpdateIsSubmitting,
   ActionUpdateSubmitErrorMessage,
+  ActionUpdateTheme,
   State,
+  Theme,
   UpdateFieldErrorMessagePayload,
   UpdateFieldValuePayload,
 } from './types';
+
+export function updateTheme(value: Theme): ActionUpdateTheme {
+  return { type: ActionType.UPDATE_THEME, value };
+}
 
 export function updateIsSignedIn(
   value: State['isSignedIn'],
