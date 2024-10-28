@@ -37,7 +37,8 @@ main {
 }
 
 button,
-input[role='button'] {
+input[role='button'],
+a {
   &:focus-visible {
     outline: 5px solid var(--color-highlight);
   }

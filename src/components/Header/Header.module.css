@@ -22,7 +22,9 @@
 .github-link {
   display: flex;
 
-  &--inverted {
+  border-radius: 50%;
+
+  &--inverted svg {
     filter: invert(1);
   }
 }
