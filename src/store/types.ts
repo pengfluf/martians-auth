@@ -18,7 +18,7 @@ export enum FieldKey {
   'password' = 'password',
 }
 
-export type FieldTypeMap = Record<FieldKey, HTMLInputElement['type']>;
+export type FieldAttrsMap = Record<FieldKey, Partial<FieldState>>;
 
 export type Fields = Record<FieldKey, FieldState>;
 

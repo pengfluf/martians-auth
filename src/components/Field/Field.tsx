@@ -1,6 +1,6 @@
-import { ChangeEvent, memo, useCallback, useMemo } from 'react';
+import { ChangeEvent, memo, useCallback } from 'react';
 
-import { fieldTypeMap } from '@constants';
+import { initialFields } from '@constants';
 import {
   FieldKey,
   UpdateFieldErrorMessagePayload,
@@ -56,7 +56,7 @@ function FieldComponent({
     [id, errorMessage, updateValue, updateErrorMessage],
   );
 
-  const ariaDescribedById = useMemo(() => getAriaDescribedById(id), [id]);
+  const ariaDescribedById = getAriaDescribedById(id);
 
   return (
     <div className={style.wrapper}>
@@ -64,10 +64,11 @@ function FieldComponent({
       <input
         id={id}
         className={inputClassName}
-        type={fieldTypeMap[id]}
+        type={initialFields[id].type}
         value={value}
         onChange={onChange}
         required={isRequired}
+        autoComplete={id}
         aria-required={isRequired}
         aria-label={id}
         aria-describedby={ariaDescribedById}

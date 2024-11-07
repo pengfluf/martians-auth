@@ -1,6 +1,5 @@
 import { FieldKey, FieldState } from '@store/types';
 
-import { getEmailErrorMessage } from './getEmailErrorMessage';
 import { getPasswordErrorMessage } from './getPasswordErrorMessage';
 
 interface Payload {
@@ -13,8 +12,6 @@ export function getFieldErrorMessage({
   value,
 }: Payload): FieldState['errorMessage'] {
   switch (key) {
-    case FieldKey.email:
-      return getEmailErrorMessage(value);
     case FieldKey.password:
       return getPasswordErrorMessage(value);
     default:

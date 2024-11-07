@@ -8,8 +8,10 @@
     "build": "tsc -b && vite build",
     "lint:js": "eslint .",
     "lint:styles": "stylelint ./src/**/*.css",
+    "lint": "pnpm /^lint:.*/",
     "format:js": "eslint . --fix",
     "format:styles": "pnpm lint:styles -- --fix",
+    "format": "pnpm /^format:.*/",
     "preview": "vite preview",
     "test": "jest --passWithNoTests"
   },

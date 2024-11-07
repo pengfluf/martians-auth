@@ -1,5 +1,5 @@
-import { fieldTypeMap } from '@constants';
-import { FieldKey, Fields } from '@store/types';
+import { fieldAttrsMap as attrs } from '@constants';
+import { FieldKey, Fields, FieldState } from '@store/types';
 
 type Keys = (keyof typeof FieldKey)[];
 
@@ -8,11 +8,11 @@ export function getInitialFields(): Fields {
     (acc, key) => ({
       ...acc,
       [key]: {
-        type: fieldTypeMap[key],
+        type: attrs[key].type,
         label: `${key[0].toUpperCase()}${key.slice(1)}`,
         value: '',
         errorMessage: '',
-      },
+      } as FieldState,
     }),
     {} as Fields,
   );
