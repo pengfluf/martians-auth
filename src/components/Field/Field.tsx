@@ -69,7 +69,6 @@ function FieldComponent({
         onChange={onChange}
         required={isRequired}
         autoComplete={id}
-        aria-required={isRequired}
         aria-label={id}
         aria-describedby={ariaDescribedById}
         aria-invalid={!!errorMessage}
