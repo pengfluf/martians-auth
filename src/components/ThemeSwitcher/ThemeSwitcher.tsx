@@ -1,18 +1,12 @@
 import { useThemeContext } from '@utils/context';
 
-import {
-  useClassNames,
-  useSwitchTheme,
-  useUpdateWithTheme,
-} from './utils';
+import { useClassNames, useSwitchTheme } from './utils';
 
 import style from './ThemeSwitcher.module.css';
 
 export function ThemeSwitcher() {
   const { theme, updateTheme } = useThemeContext();
   const classNames = useClassNames({ style, theme });
-
-  useUpdateWithTheme({ updateTheme });
 
   const switchTheme = useSwitchTheme({ theme, updateTheme });
 

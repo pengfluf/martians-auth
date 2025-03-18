@@ -17,3 +17,5 @@ export const initialFields = getInitialFields();
 export const localStorageKeys = {
   theme: 'theme',
 } as const;
+
+export const PREFER_COLOR_SCHEME_LIGHT = '(prefers-color-scheme: light)';

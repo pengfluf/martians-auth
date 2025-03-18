@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useCallback, useMemo } from 'react';
 
+import { useUpdateWithTheme } from '@components/ThemeSwitcher/utils';
 import * as actions from '@store/actions';
 import { AppDispatch, State, Theme, ThemeValue } from '@store/types';
 
@@ -37,6 +38,8 @@ export function ThemeContextProvider({
     () => ({ theme, updateTheme }),
     [theme, updateTheme],
   );
+
+  useUpdateWithTheme({ updateTheme });
 
   return (
     <ThemeContext.Provider value={memoValue}>
